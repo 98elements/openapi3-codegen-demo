@@ -38,3 +38,5 @@ openApiGenerate {
             dateLibrary: "java8"
     ]
 }
+
+compileJava.dependsOn tasks.openApiGenerate
