@@ -3,6 +3,8 @@ package com._98elements.openapi3codegendemo.domain;
 import java.util.List;
 import java.util.Objects;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 public class Pet {
 
     private final Long id;
@@ -13,11 +15,11 @@ public class Pet {
 
     private final List<String> photoUrls;
 
-    public Pet(Long id, String name, PetStatus status, List<String> photoUrls) {
-        this.id = id;
-        this.name = name;
-        this.status = status;
-        this.photoUrls = photoUrls;
+    public Pet(final Long id, final String name, final PetStatus status, final List<String> photoUrls) {
+        this.id = checkNotNull(id);
+        this.name = checkNotNull(name);
+        this.status = checkNotNull(status);
+        this.photoUrls = checkNotNull(photoUrls);
     }
 
     public Long getId() {

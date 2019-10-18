@@ -5,17 +5,19 @@ import com._98elements.openapi3codegendemo.domain.Pet;
 import com._98elements.openapi3codegendemo.domain.PetStatus;
 import com._98elements.openapi3codegendemo.infrastructure.openapi.pets.PetApi;
 import com._98elements.openapi3codegendemo.infrastructure.openapi.pets.dto.PetDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 class PetClientImpl implements PetClient {
 
-    @Autowired
-    private PetApi petApi;
+    private final PetApi petApi;
+
+    PetClientImpl(final PetApi petApi) {
+        this.petApi = petApi;
+    }
 
     @Override
-    public void create(Pet pet) {
+    public void create(final Pet pet) {
         petApi.addPet(
                 new PetDto()
                         .id(pet.getId())
@@ -26,7 +28,7 @@ class PetClientImpl implements PetClient {
     }
 
     @Override
-    public Pet get(long petId) {
+    public Pet get(final long petId) {
         final PetDto petDto = petApi.getPetById(petId);
         return new Pet(
                 petDto.getId(),
