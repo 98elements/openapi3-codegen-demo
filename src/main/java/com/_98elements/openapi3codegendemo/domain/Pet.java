@@ -9,11 +9,14 @@ public class Pet {
 
     private final String name;
 
+    private final PetStatus status;
+
     private final List<String> photoUrls;
 
-    public Pet(Long id, String name, List<String> photoUrls) {
+    public Pet(Long id, String name, PetStatus status, List<String> photoUrls) {
         this.id = id;
         this.name = name;
+        this.status = status;
         this.photoUrls = photoUrls;
     }
 
@@ -23,6 +26,10 @@ public class Pet {
 
     public String getName() {
         return name;
+    }
+
+    public PetStatus getStatus() {
+        return status;
     }
 
     public List<String> getPhotoUrls() {
@@ -36,12 +43,13 @@ public class Pet {
         Pet pet = (Pet) o;
         return Objects.equals(id, pet.id) &&
                 Objects.equals(name, pet.name) &&
+                status == pet.status &&
                 Objects.equals(photoUrls, pet.photoUrls);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, photoUrls);
+        return Objects.hash(id, name, status, photoUrls);
     }
 
     @Override
@@ -49,6 +57,7 @@ public class Pet {
         return "Pet{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", status=" + status +
                 ", photoUrls=" + photoUrls +
                 '}';
     }
