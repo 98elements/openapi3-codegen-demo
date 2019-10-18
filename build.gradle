@@ -1,5 +1,8 @@
 plugins {
     id 'java'
+    id 'groovy'
+    id 'idea'
+    id 'org.openapi.generator' version '4.1.3'
 }
 
 group 'com._98elements'
@@ -11,6 +14,27 @@ repositories {
     mavenCentral()
 }
 
+sourceSets.main.java.srcDirs += "$buildDir/generated/src/main"
+
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.springframework.boot:spring-boot-starter-web:2.1.9.RELEASE'
+    compile 'io.swagger:swagger-annotations:1.5.24'
+    compile 'com.google.code.findbugs:jsr305:3.0.2'
+    testCompile 'org.springframework.boot:spring-boot-starter-test:2.1.9.RELEASE'
+    testCompile 'org.spockframework:spock-spring:1.3-groovy-2.5'
+    testCompile 'org.spockframework:spock-core:1.3-groovy-2.5'
+}
+
+openApiGenerate {
+    generatorName = "java"
+    library = "resttemplate"
+    inputSpec = "$rootDir/specs/petstore.yaml".toString()
+    outputDir = "$buildDir/generated".toString()
+    apiPackage = "com._98elements.openapi3codegendemo.infrastructure.openapi.pets"
+    invokerPackage = "com._98elements.openapi3codegendemo.infrastructure.openapi.pets"
+    modelPackage = "com._98elements.openapi3codegendemo.infrastructure.openapi.pets.dto"
+    modelNameSuffix = "Dto"
+    configOptions = [
+            dateLibrary: "java8"
+    ]
 }
