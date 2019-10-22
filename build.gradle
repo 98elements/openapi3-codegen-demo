@@ -19,7 +19,7 @@ sourceSets.main.java.srcDirs += "$buildDir/generated/src/main"
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web:2.1.9.RELEASE'
     compile 'io.swagger:swagger-annotations:1.5.24'
-    compile 'com.google.code.findbugs:jsr305:3.0.2'
+    compile 'com.google.code.findbugs:jsr305:3.0.2' // For the @Nullable annotation.
     compile 'com.google.guava:guava:28.1-jre'
     testCompile 'org.springframework.boot:spring-boot-starter-test:2.1.9.RELEASE'
     testCompile 'org.spockframework:spock-spring:1.3-groovy-2.5'
