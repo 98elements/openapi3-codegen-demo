@@ -11,4 +11,4 @@ BUILD SUCCESSFUL in 8s
 4 actionable tasks: 4 executed
 ```
 
-See more posts at [98elements blog](https://blog.98elements.com)!
+See more posts at [98elements blog](https://98elements.com/blog)!
